@@ -2,11 +2,16 @@ const String getAllOrdersQuery = r'''
 query getOrders($sortKey : OrderSortKeys, $accessToken : String!, $reverse: Boolean){
 customer(customerAccessToken: $accessToken) {
     orders(first: 250, sortKey: $sortKey, reverse: $reverse) {
+      pageInfo {
+        hasNextPage
+      }
       edges {
         node {
           id
           email
           currencyCode
+          financialStatus
+          fulfillmentStatus
           customerUrl
           lineItems(first: 250) {
             edges {

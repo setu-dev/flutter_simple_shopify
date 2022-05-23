@@ -19,11 +19,11 @@ query($cursor : String, $metafieldsNamespace : String){
               namespace
               key
               value
-              valueType
+              type
               description
             }
           }
-        }
+        } 
         variants(first: 250) {
           edges {
             node {

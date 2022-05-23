@@ -117,8 +117,8 @@ class __$OrdersCopyWithImpl<$Res> extends _$OrdersCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Orders implements _Orders {
-  _$_Orders({required this.orderList, required this.hasNextPage});
+class _$_Orders extends _Orders {
+  _$_Orders({required this.orderList, required this.hasNextPage}) : super._();
 
   factory _$_Orders.fromJson(Map<String, dynamic> json) =>
       _$$_OrdersFromJson(json);
@@ -160,9 +160,10 @@ class _$_Orders implements _Orders {
   }
 }
 
-abstract class _Orders implements Orders {
+abstract class _Orders extends Orders {
   factory _Orders({required List<Order> orderList, required bool hasNextPage}) =
       _$_Orders;
+  _Orders._() : super._();
 
   factory _Orders.fromJson(Map<String, dynamic> json) = _$_Orders.fromJson;
 

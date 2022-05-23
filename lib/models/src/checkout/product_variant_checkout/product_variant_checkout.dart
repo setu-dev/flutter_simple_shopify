@@ -1,8 +1,10 @@
+import 'package:flutter_simple_shopify/models/src/checkout/product_checkout/product_checkout.dart';
 import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
 import 'package:flutter_simple_shopify/models/src/product/shopify_image/shopify_image.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'product_variant_checkout.freezed.dart';
+
 part 'product_variant_checkout.g.dart';
 
 @freezed
@@ -16,6 +18,7 @@ class ProductVariantCheckout with _$ProductVariantCheckout {
     required String sku,
     required bool requiresShipping,
     required String id,
+    required ProductCheckout product,
     ShopifyImage? image,
     PriceV2? compareAtPrice,
     double? weight,
@@ -24,4 +27,5 @@ class ProductVariantCheckout with _$ProductVariantCheckout {
 
   factory ProductVariantCheckout.fromJson(Map<String, dynamic> json) =>
       _$ProductVariantCheckoutFromJson(json);
+
 }

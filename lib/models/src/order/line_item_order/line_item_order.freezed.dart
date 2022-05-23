@@ -29,7 +29,7 @@ class _$LineItemOrderTearOff {
       required int quantity,
       required String title,
       List<DiscountAllocations> discountAllocations = const [],
-      ProductVariantCheckout? variant = null}) {
+      ProductVariantOrder? variant = null}) {
     return _LineItemOrder(
       currentQuantity: currentQuantity,
       discountedTotalPrice: discountedTotalPrice,
@@ -58,7 +58,7 @@ mixin _$LineItemOrder {
   String get title => throw _privateConstructorUsedError;
   List<DiscountAllocations> get discountAllocations =>
       throw _privateConstructorUsedError;
-  ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
+  ProductVariantOrder? get variant => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -78,11 +78,11 @@ abstract class $LineItemOrderCopyWith<$Res> {
       int quantity,
       String title,
       List<DiscountAllocations> discountAllocations,
-      ProductVariantCheckout? variant});
+      ProductVariantOrder? variant});
 
   $PriceV2CopyWith<$Res> get discountedTotalPrice;
   $PriceV2CopyWith<$Res> get originalTotalPrice;
-  $ProductVariantCheckoutCopyWith<$Res>? get variant;
+  $ProductVariantOrderCopyWith<$Res>? get variant;
 }
 
 /// @nodoc
@@ -132,7 +132,7 @@ class _$LineItemOrderCopyWithImpl<$Res>
       variant: variant == freezed
           ? _value.variant
           : variant // ignore: cast_nullable_to_non_nullable
-              as ProductVariantCheckout?,
+              as ProductVariantOrder?,
     ));
   }
 
@@ -151,12 +151,12 @@ class _$LineItemOrderCopyWithImpl<$Res>
   }
 
   @override
-  $ProductVariantCheckoutCopyWith<$Res>? get variant {
+  $ProductVariantOrderCopyWith<$Res>? get variant {
     if (_value.variant == null) {
       return null;
     }
 
-    return $ProductVariantCheckoutCopyWith<$Res>(_value.variant!, (value) {
+    return $ProductVariantOrderCopyWith<$Res>(_value.variant!, (value) {
       return _then(_value.copyWith(variant: value));
     });
   }
@@ -176,14 +176,14 @@ abstract class _$LineItemOrderCopyWith<$Res>
       int quantity,
       String title,
       List<DiscountAllocations> discountAllocations,
-      ProductVariantCheckout? variant});
+      ProductVariantOrder? variant});
 
   @override
   $PriceV2CopyWith<$Res> get discountedTotalPrice;
   @override
   $PriceV2CopyWith<$Res> get originalTotalPrice;
   @override
-  $ProductVariantCheckoutCopyWith<$Res>? get variant;
+  $ProductVariantOrderCopyWith<$Res>? get variant;
 }
 
 /// @nodoc
@@ -235,7 +235,7 @@ class __$LineItemOrderCopyWithImpl<$Res>
       variant: variant == freezed
           ? _value.variant
           : variant // ignore: cast_nullable_to_non_nullable
-              as ProductVariantCheckout?,
+              as ProductVariantOrder?,
     ));
   }
 }
@@ -271,7 +271,7 @@ class _$_LineItemOrder extends _LineItemOrder {
   final List<DiscountAllocations> discountAllocations;
   @JsonKey()
   @override
-  final ProductVariantCheckout? variant;
+  final ProductVariantOrder? variant;
 
   @override
   String toString() {
@@ -326,7 +326,7 @@ abstract class _LineItemOrder extends LineItemOrder {
       required int quantity,
       required String title,
       List<DiscountAllocations> discountAllocations,
-      ProductVariantCheckout? variant}) = _$_LineItemOrder;
+      ProductVariantOrder? variant}) = _$_LineItemOrder;
   _LineItemOrder._() : super._();
 
   factory _LineItemOrder.fromJson(Map<String, dynamic> json) =
@@ -345,7 +345,7 @@ abstract class _LineItemOrder extends LineItemOrder {
   @override
   List<DiscountAllocations> get discountAllocations;
   @override
-  ProductVariantCheckout? get variant;
+  ProductVariantOrder? get variant;
   @override
   @JsonKey(ignore: true)
   _$LineItemOrderCopyWith<_LineItemOrder> get copyWith =>

@@ -1,3 +1,4 @@
+import 'package:flutter_simple_shopify/models/src/checkout/discount_application/discount_application.dart';
 import 'package:flutter_simple_shopify/models/src/order/order.dart';
 import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -5,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../json_helper.dart';
 import 'applied_gift_cards/applied_gift_cards.dart';
 import 'available_shipping_rates/available_shipping_rates.dart';
+import 'discount_allocation/discount_allocation.dart';
 import 'line_item/line_item.dart';
 import 'mailing_address/mailing_address.dart';
 import 'shipping_rates/shipping_rates.dart';
@@ -40,6 +42,8 @@ class Checkout with _$Checkout {
     String? note,
     String? webUrl,
     String? updatedAt,
+    List<DiscountAllocation>? shippingDiscountAllocations,
+    @JsonKey(fromJson: JsonHelper.discountApplications)List<DiscountApplication>? discountApplications,
   }) = _Checkout;
 
   factory Checkout.fromJson(Map<String, dynamic> json) =>

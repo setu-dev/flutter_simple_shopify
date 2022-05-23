@@ -45,6 +45,12 @@ _$_Checkout _$$_CheckoutFromJson(Map<String, dynamic> json) => _$_Checkout(
       note: json['note'] as String?,
       webUrl: json['webUrl'] as String?,
       updatedAt: json['updatedAt'] as String?,
+      shippingDiscountAllocations: (json['shippingDiscountAllocations']
+              as List<dynamic>?)
+          ?.map((e) => DiscountAllocation.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      discountApplications:
+          JsonHelper.discountApplications(json['discountApplications']),
     );
 
 Map<String, dynamic> _$$_CheckoutToJson(_$_Checkout instance) =>
@@ -72,4 +78,6 @@ Map<String, dynamic> _$$_CheckoutToJson(_$_Checkout instance) =>
       'note': instance.note,
       'webUrl': instance.webUrl,
       'updatedAt': instance.updatedAt,
+      'shippingDiscountAllocations': instance.shippingDiscountAllocations,
+      'discountApplications': instance.discountApplications,
     };

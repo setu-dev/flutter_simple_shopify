@@ -46,7 +46,10 @@ class _$CheckoutTearOff {
       String? completedAt,
       String? note,
       String? webUrl,
-      String? updatedAt}) {
+      String? updatedAt,
+      List<DiscountAllocation>? shippingDiscountAllocations,
+      @JsonKey(fromJson: JsonHelper.discountApplications)
+          List<DiscountApplication>? discountApplications}) {
     return _Checkout(
       id: id,
       ready: ready,
@@ -71,6 +74,8 @@ class _$CheckoutTearOff {
       note: note,
       webUrl: webUrl,
       updatedAt: updatedAt,
+      shippingDiscountAllocations: shippingDiscountAllocations,
+      discountApplications: discountApplications,
     );
   }
 
@@ -110,6 +115,11 @@ mixin _$Checkout {
   String? get note => throw _privateConstructorUsedError;
   String? get webUrl => throw _privateConstructorUsedError;
   String? get updatedAt => throw _privateConstructorUsedError;
+  List<DiscountAllocation>? get shippingDiscountAllocations =>
+      throw _privateConstructorUsedError;
+  @JsonKey(fromJson: JsonHelper.discountApplications)
+  List<DiscountApplication>? get discountApplications =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -134,7 +144,8 @@ abstract class $CheckoutCopyWith<$Res> {
       PriceV2 subtotalPriceV2,
       bool requiresShipping,
       List<AppliedGiftCards> appliedGiftCards,
-      @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem> lineItems,
+      @JsonKey(fromJson: JsonHelper.lineItems)
+          List<LineItem> lineItems,
       Order? order,
       String? orderStatusUrl,
       String? shopifyPaymentsAccountId,
@@ -144,7 +155,10 @@ abstract class $CheckoutCopyWith<$Res> {
       String? completedAt,
       String? note,
       String? webUrl,
-      String? updatedAt});
+      String? updatedAt,
+      List<DiscountAllocation>? shippingDiscountAllocations,
+      @JsonKey(fromJson: JsonHelper.discountApplications)
+          List<DiscountApplication>? discountApplications});
 
   $AvailableShippingRatesCopyWith<$Res>? get availableShippingRates;
   $PriceV2CopyWith<$Res> get totalTaxV2;
@@ -188,6 +202,8 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
     Object? note = freezed,
     Object? webUrl = freezed,
     Object? updatedAt = freezed,
+    Object? shippingDiscountAllocations = freezed,
+    Object? discountApplications = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -282,6 +298,14 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      shippingDiscountAllocations: shippingDiscountAllocations == freezed
+          ? _value.shippingDiscountAllocations
+          : shippingDiscountAllocations // ignore: cast_nullable_to_non_nullable
+              as List<DiscountAllocation>?,
+      discountApplications: discountApplications == freezed
+          ? _value.discountApplications
+          : discountApplications // ignore: cast_nullable_to_non_nullable
+              as List<DiscountApplication>?,
     ));
   }
 
@@ -370,7 +394,8 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
       PriceV2 subtotalPriceV2,
       bool requiresShipping,
       List<AppliedGiftCards> appliedGiftCards,
-      @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem> lineItems,
+      @JsonKey(fromJson: JsonHelper.lineItems)
+          List<LineItem> lineItems,
       Order? order,
       String? orderStatusUrl,
       String? shopifyPaymentsAccountId,
@@ -380,7 +405,10 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
       String? completedAt,
       String? note,
       String? webUrl,
-      String? updatedAt});
+      String? updatedAt,
+      List<DiscountAllocation>? shippingDiscountAllocations,
+      @JsonKey(fromJson: JsonHelper.discountApplications)
+          List<DiscountApplication>? discountApplications});
 
   @override
   $AvailableShippingRatesCopyWith<$Res>? get availableShippingRates;
@@ -432,6 +460,8 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
     Object? note = freezed,
     Object? webUrl = freezed,
     Object? updatedAt = freezed,
+    Object? shippingDiscountAllocations = freezed,
+    Object? discountApplications = freezed,
   }) {
     return _then(_Checkout(
       id: id == freezed
@@ -526,6 +556,14 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      shippingDiscountAllocations: shippingDiscountAllocations == freezed
+          ? _value.shippingDiscountAllocations
+          : shippingDiscountAllocations // ignore: cast_nullable_to_non_nullable
+              as List<DiscountAllocation>?,
+      discountApplications: discountApplications == freezed
+          ? _value.discountApplications
+          : discountApplications // ignore: cast_nullable_to_non_nullable
+              as List<DiscountApplication>?,
     ));
   }
 }
@@ -546,7 +584,8 @@ class _$_Checkout extends _Checkout {
       required this.subtotalPriceV2,
       required this.requiresShipping,
       required this.appliedGiftCards,
-      @JsonKey(fromJson: JsonHelper.lineItems) required this.lineItems,
+      @JsonKey(fromJson: JsonHelper.lineItems)
+          required this.lineItems,
       this.order,
       this.orderStatusUrl,
       this.shopifyPaymentsAccountId,
@@ -556,7 +595,10 @@ class _$_Checkout extends _Checkout {
       this.completedAt,
       this.note,
       this.webUrl,
-      this.updatedAt})
+      this.updatedAt,
+      this.shippingDiscountAllocations,
+      @JsonKey(fromJson: JsonHelper.discountApplications)
+          this.discountApplications})
       : super._();
 
   factory _$_Checkout.fromJson(Map<String, dynamic> json) =>
@@ -609,10 +651,15 @@ class _$_Checkout extends _Checkout {
   final String? webUrl;
   @override
   final String? updatedAt;
+  @override
+  final List<DiscountAllocation>? shippingDiscountAllocations;
+  @override
+  @JsonKey(fromJson: JsonHelper.discountApplications)
+  final List<DiscountApplication>? discountApplications;
 
   @override
   String toString() {
-    return 'Checkout(id: $id, ready: $ready, availableShippingRates: $availableShippingRates, createdAt: $createdAt, currencyCode: $currencyCode, totalTaxV2: $totalTaxV2, totalPriceV2: $totalPriceV2, taxesIncluded: $taxesIncluded, taxExempt: $taxExempt, subtotalPriceV2: $subtotalPriceV2, requiresShipping: $requiresShipping, appliedGiftCards: $appliedGiftCards, lineItems: $lineItems, order: $order, orderStatusUrl: $orderStatusUrl, shopifyPaymentsAccountId: $shopifyPaymentsAccountId, shippingAddress: $shippingAddress, shippingLine: $shippingLine, email: $email, completedAt: $completedAt, note: $note, webUrl: $webUrl, updatedAt: $updatedAt)';
+    return 'Checkout(id: $id, ready: $ready, availableShippingRates: $availableShippingRates, createdAt: $createdAt, currencyCode: $currencyCode, totalTaxV2: $totalTaxV2, totalPriceV2: $totalPriceV2, taxesIncluded: $taxesIncluded, taxExempt: $taxExempt, subtotalPriceV2: $subtotalPriceV2, requiresShipping: $requiresShipping, appliedGiftCards: $appliedGiftCards, lineItems: $lineItems, order: $order, orderStatusUrl: $orderStatusUrl, shopifyPaymentsAccountId: $shopifyPaymentsAccountId, shippingAddress: $shippingAddress, shippingLine: $shippingLine, email: $email, completedAt: $completedAt, note: $note, webUrl: $webUrl, updatedAt: $updatedAt, shippingDiscountAllocations: $shippingDiscountAllocations, discountApplications: $discountApplications)';
   }
 
   @override
@@ -655,7 +702,12 @@ class _$_Checkout extends _Checkout {
                 .equals(other.completedAt, completedAt) &&
             const DeepCollectionEquality().equals(other.note, note) &&
             const DeepCollectionEquality().equals(other.webUrl, webUrl) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
+            const DeepCollectionEquality().equals(
+                other.shippingDiscountAllocations,
+                shippingDiscountAllocations) &&
+            const DeepCollectionEquality()
+                .equals(other.discountApplications, discountApplications));
   }
 
   @override
@@ -683,7 +735,9 @@ class _$_Checkout extends _Checkout {
         const DeepCollectionEquality().hash(completedAt),
         const DeepCollectionEquality().hash(note),
         const DeepCollectionEquality().hash(webUrl),
-        const DeepCollectionEquality().hash(updatedAt)
+        const DeepCollectionEquality().hash(updatedAt),
+        const DeepCollectionEquality().hash(shippingDiscountAllocations),
+        const DeepCollectionEquality().hash(discountApplications)
       ]);
 
   @JsonKey(ignore: true)
@@ -722,7 +776,10 @@ abstract class _Checkout extends Checkout {
       String? completedAt,
       String? note,
       String? webUrl,
-      String? updatedAt}) = _$_Checkout;
+      String? updatedAt,
+      List<DiscountAllocation>? shippingDiscountAllocations,
+      @JsonKey(fromJson: JsonHelper.discountApplications)
+          List<DiscountApplication>? discountApplications}) = _$_Checkout;
   _Checkout._() : super._();
 
   factory _Checkout.fromJson(Map<String, dynamic> json) = _$_Checkout.fromJson;
@@ -774,6 +831,11 @@ abstract class _Checkout extends Checkout {
   String? get webUrl;
   @override
   String? get updatedAt;
+  @override
+  List<DiscountAllocation>? get shippingDiscountAllocations;
+  @override
+  @JsonKey(fromJson: JsonHelper.discountApplications)
+  List<DiscountApplication>? get discountApplications;
   @override
   @JsonKey(ignore: true)
   _$CheckoutCopyWith<_Checkout> get copyWith =>

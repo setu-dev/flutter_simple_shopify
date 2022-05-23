@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product_variant_checkout.dart';
+part of 'product_variant_order.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ProductVariantCheckout _$$_ProductVariantCheckoutFromJson(
+_$_ProductVariantOrder _$$_ProductVariantOrderFromJson(
         Map<String, dynamic> json) =>
-    _$_ProductVariantCheckout(
-      priceV2: PriceV2.fromJson(json['priceV2'] as Map<String, dynamic>),
+    _$_ProductVariantOrder(
+      priceV2: json['priceV2'] == null
+          ? null
+          : PriceV2.fromJson(json['priceV2'] as Map<String, dynamic>),
       title: json['title'] as String,
       availableForSale: json['availableForSale'] as bool,
       sku: json['sku'] as String,
       requiresShipping: json['requiresShipping'] as bool,
       id: json['id'] as String,
-      product:
-          ProductCheckout.fromJson(json['product'] as Map<String, dynamic>),
       image: json['image'] == null
           ? null
           : ShopifyImage.fromJson(json['image'] as Map<String, dynamic>),
@@ -27,8 +27,8 @@ _$_ProductVariantCheckout _$$_ProductVariantCheckoutFromJson(
       weightUnit: json['weightUnit'] as String?,
     );
 
-Map<String, dynamic> _$$_ProductVariantCheckoutToJson(
-        _$_ProductVariantCheckout instance) =>
+Map<String, dynamic> _$$_ProductVariantOrderToJson(
+        _$_ProductVariantOrder instance) =>
     <String, dynamic>{
       'priceV2': instance.priceV2,
       'title': instance.title,
@@ -36,7 +36,6 @@ Map<String, dynamic> _$$_ProductVariantCheckoutToJson(
       'sku': instance.sku,
       'requiresShipping': instance.requiresShipping,
       'id': instance.id,
-      'product': instance.product,
       'image': instance.image,
       'compareAtPrice': instance.compareAtPrice,
       'weight': instance.weight,

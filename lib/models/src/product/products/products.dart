@@ -7,6 +7,7 @@ part 'products.g.dart';
 @freezed
 class Products with _$Products {
   const Products._();
+
   factory Products(
       {required List<Product> productList,
       required bool hasNextPage}) = _Products;

@@ -84,6 +84,51 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
               availableForSale
               sku
               requiresShipping
+              product {
+                metafields(first: 250) {
+                  edges {
+                    node {
+                      id
+                      namespace
+                      key
+                      value
+                      type
+                      description
+                    }
+                  }
+                }
+                variants(first: 250) {
+                  edges {
+                    node {
+                      id
+                      title
+                      image {
+                        altText
+                        id
+                        originalSrc
+                      }
+                      priceV2 {
+                        amount
+                        currencyCode
+                      }
+                      compareAtPriceV2 {
+                        amount
+                        currencyCode
+                      }
+                      weight
+                      weightUnit
+                      availableForSale
+                      sku
+                      requiresShipping
+                      quantityAvailable
+                      selectedOptions {
+                        name
+                        value
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -104,6 +149,25 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
       subtotalPriceV2 {
         amount
         currencyCode
+      }
+      discountApplications(first: 5) {
+        edges {
+          node {
+            ... on DiscountCodeApplication {
+              allocationMethod
+              applicable
+              targetType
+              targetSelection
+              code
+              value {
+                ... on MoneyV2 {
+                    amount
+                    currencyCode
+                  }
+              }
+            }
+          }
+        }
       }
       orderStatusUrl
       order {

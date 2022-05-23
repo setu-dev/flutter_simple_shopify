@@ -37,6 +37,7 @@ import '../../shopify_config.dart';
 /// ShopifyCheckout provides various method in order to work with checkouts.
 class ShopifyCheckout with ShopifyError {
   ShopifyCheckout._();
+
   static final ShopifyCheckout instance = ShopifyCheckout._();
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
@@ -56,16 +57,18 @@ class ShopifyCheckout with ShopifyError {
     QueryResult result = await _graphQLClient!.query(_optionsRequireShipping);
 
     final WatchQueryOptions _options = WatchQueryOptions(
-        document: gql(_requiresShipping(result) == true && getShippingInfo
-            ? withPaymentId
-                ? getCheckoutInfoWithPaymentId
-                : getCheckoutInfo
-            : withPaymentId
-                ? getCheckoutInfoWithPaymentIdWithoutShipping
-                : getCheckoutInfoWithoutShipping),
-        variables: {
-          'id': checkoutId,
-        });
+      document: gql(_requiresShipping(result) == true && getShippingInfo
+          ? withPaymentId
+              ? getCheckoutInfoWithPaymentId
+              : getCheckoutInfo
+          : withPaymentId
+              ? getCheckoutInfoWithPaymentIdWithoutShipping
+              : getCheckoutInfoWithoutShipping),
+      variables: {
+        'id': checkoutId,
+      },
+      fetchPolicy: FetchPolicy.noCache,
+    );
     final QueryResult _queryResult = (await _graphQLClient!.query(_options));
     checkForError(_queryResult);
     if (deleteThisPartOfCache) {
@@ -133,7 +136,7 @@ class ShopifyCheckout with ShopifyError {
     final QueryResult result =
         await ShopifyConfig.graphQLClient!.query(_options);
     checkForError(result);
-    Orders orders = Orders.fromJson(
+    Orders orders = Orders.fromGraphJson(
         (((result.data ?? const {})['customer'] ?? const {})['orders'] ??
             const {}));
     if (deleteThisPartOfCache) {
@@ -452,7 +455,8 @@ class ShopifyCheckout with ShopifyError {
           'lineItems': [
             for (var lineItem in lineItems)
               {
-                'variantId': lineItem.id,
+                'id': lineItem.id,
+                'variantId': lineItem.variant!.id,
                 'quantity': lineItem.quantity,
                 'customAttributes': lineItem.customAttributes
                     .map((e) => {
